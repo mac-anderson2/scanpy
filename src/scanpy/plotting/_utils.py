@@ -375,7 +375,7 @@ def savefig_or_show(
                     save = save.replace(try_ext, "")
                     break
         # append it
-        writekey += save
+        writekey = save
         save = True
     if do_save := settings.autosave if save is None else save:
         if save:  # `save=True | "some-str"` argument has been used
