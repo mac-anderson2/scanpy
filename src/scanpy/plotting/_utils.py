@@ -352,7 +352,7 @@ def _savefig(writekey, dpi=None, ext=None):
     settings.figdir.mkdir(parents=True, exist_ok=True)
     if ext is None:
         ext = settings.file_format_figs
-    filename = settings.figdir / f"{writekey}{settings.plot_suffix}.{ext}"
+    filename = writekey
     # output the following msg at warning level; it's really important for the user
     logg.warning(f"saving figure to file {filename}")
     plt.savefig(filename, dpi=dpi, bbox_inches="tight")
@@ -375,7 +375,7 @@ def savefig_or_show(
                     save = save.replace(try_ext, "")
                     break
         # append it
-        writekey += save
+        writekey = save
         save = True
     if do_save := settings.autosave if save is None else save:
         if save:  # `save=True | "some-str"` argument has been used
